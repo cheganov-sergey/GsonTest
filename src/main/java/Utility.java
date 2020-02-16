@@ -38,7 +38,7 @@ public class Utility {
                 gson.fromJson(String.valueOf(jsonResponse.getBody()), Peoples.class);
 
             case STARSHIPS:
-                jsonResponse = Unirest.get("https://swapi.co/api/starships").asJson();
+                jsonResponse = Unirest.get("https://swapi.co/api/starships/").asJson();
                 gson = new GsonBuilder()
                         .registerTypeAdapter(Starship.class, new Starship())
                         .registerTypeAdapter(Starships.class, Starships.getStarships())
@@ -46,12 +46,20 @@ public class Utility {
                gson.fromJson(String.valueOf(jsonResponse.getBody()), Starships.class);
 
            case FILMS:
-               jsonResponse = Unirest.get("https://swapi.co/api/films").asJson();
+               jsonResponse = Unirest.get("https://swapi.co/api/films/").asJson();
                gson = new GsonBuilder()
                        .registerTypeAdapter(Film.class, new Film())
                        .registerTypeAdapter(Films.class, Films.getFilms())
                        .create();
                gson.fromJson(String.valueOf(jsonResponse.getBody()), Films.class);
+
+            case VEHICLES:
+                jsonResponse = Unirest.get("https://swapi.co/api/vehicles/").asJson();
+                gson = new GsonBuilder()
+                        .registerTypeAdapter(Vehicle.class, new Vehicle())
+                        .registerTypeAdapter(Vehicles.class, Vehicles.getVegicles())
+                        .create();
+                gson.fromJson(String.valueOf(jsonResponse.getBody()), Vehicles.class);
         }
 
 
@@ -71,6 +79,8 @@ public class Utility {
                 System.out.println(Starships.getStarships());
             case FILMS:
                 System.out.println(Films.getFilms());
+            case VEHICLES:
+                System.out.println(Vehicles.getVegicles());
         }
     }
 

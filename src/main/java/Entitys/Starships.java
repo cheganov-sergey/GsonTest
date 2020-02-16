@@ -19,7 +19,7 @@ public class Starships implements JsonDeserializer<Starships> {
     }
 
     /**
-     * Silgleton
+     * Singleton
      * @return единственный экземпяр класса
      */
     public static Starships getStarships() {
