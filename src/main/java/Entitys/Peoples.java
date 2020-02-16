@@ -8,14 +8,22 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * People агрегатор (людей)
+ * People агрегатор (людей) - Singleton
  */
 public class Peoples implements JsonDeserializer<Peoples> {
 
+    private static Peoples instance;  // единственный экземпляр класса
     private List<People> results;
 
-    public Peoples() {
+    private Peoples() {
         this.results = new ArrayList<People>();
+    }
+
+    public static Peoples getPeoples() {
+        if (instance == null) {
+            instance = new Peoples();
+        }
+        return instance;
     }
 
     public void addPeoples(People people) {
@@ -30,14 +38,14 @@ public class Peoples implements JsonDeserializer<Peoples> {
      * @return объект People
      * @throws JsonParseException
      */
-     public Peoples deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+    public Peoples deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
 
-        Peoples peoples = new Peoples();
+        Peoples peoples = Peoples.getPeoples();
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         JsonArray results = jsonObject.getAsJsonArray("results");
         for (JsonElement element : results) {
-           People people = context.deserialize(element, People.class);
-           peoples.addPeoples(people);
+            People people = context.deserialize(element, People.class);
+            peoples.addPeoples(people);
         }
         return peoples;
     }

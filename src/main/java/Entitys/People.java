@@ -3,8 +3,6 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Персоонажи
@@ -129,40 +127,40 @@ public class People implements JsonDeserializer<People> {
 
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            People people = new People();
-            people.setName(jsonObject.get("name").getAsString());
-            people.setHeight(jsonObject.get("height").getAsInt());
-            people.setMass(jsonObject.get("mass").getAsInt());
-            people.setHair_color(jsonObject.get("hair_color").getAsString());
-            people.setSkin_color(jsonObject.get("skin_color").getAsString());
-            people.setEye_color(jsonObject.get("eye_color").getAsString());
-            people.setBirth_year(jsonObject.get("birth_year").getAsString());
-            people.setGender(jsonObject.get("gender").getAsString());
-            people.setHomeworld(jsonObject.get("homeworld").getAsString());
+        People people = new People();
+        people.setName(jsonObject.get("name").getAsString());
+        people.setHeight(jsonObject.get("height").getAsInt());
+        people.setMass(jsonObject.get("mass").getAsInt());
+        people.setHair_color(jsonObject.get("hair_color").getAsString());
+        people.setSkin_color(jsonObject.get("skin_color").getAsString());
+        people.setEye_color(jsonObject.get("eye_color").getAsString());
+        people.setBirth_year(jsonObject.get("birth_year").getAsString());
+        people.setGender(jsonObject.get("gender").getAsString());
+        people.setHomeworld(jsonObject.get("homeworld").getAsString());
 
-            JsonArray films = jsonObject.getAsJsonArray("films");
-            for (JsonElement film : films ) {
-                people.setFilms(film.getAsString());
-            }
+        JsonArray films = jsonObject.getAsJsonArray("films");
+        for (JsonElement film : films ) {
+            people.setFilms(film.getAsString());
+        }
 
-            JsonArray species = jsonObject.getAsJsonArray("species");
-            for (JsonElement specie : species ) {
-                people.setSpecies(specie.getAsString());
-            }
+        JsonArray species = jsonObject.getAsJsonArray("species");
+        for (JsonElement specie : species ) {
+            people.setSpecies(specie.getAsString());
+        }
 
-            JsonArray vehicles = jsonObject.getAsJsonArray("vehicles");
-            for (JsonElement vehicle : vehicles ) {
-                people.setVehicles(vehicle.getAsString());
-            }
+        JsonArray vehicles = jsonObject.getAsJsonArray("vehicles");
+        for (JsonElement vehicle : vehicles ) {
+            people.setVehicles(vehicle.getAsString());
+        }
 
-            JsonArray starships = jsonObject.getAsJsonArray("starships");
-            for (JsonElement starship : starships ) {
-                people.setStarships(starship.getAsString());
-            }
+        JsonArray starships = jsonObject.getAsJsonArray("starships");
+        for (JsonElement starship : starships ) {
+            people.setStarships(starship.getAsString());
+        }
 
-            people.setCreated(jsonObject.get("created").getAsString());
-            people.setEdited(jsonObject.get("edited").getAsString());
-            people.setUrl(jsonObject.get("url").getAsString());
+        people.setCreated(jsonObject.get("created").getAsString());
+        people.setEdited(jsonObject.get("edited").getAsString());
+        people.setUrl(jsonObject.get("url").getAsString());
 
         return people;
     }
