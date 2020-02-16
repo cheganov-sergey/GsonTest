@@ -1,6 +1,5 @@
 package Entitys;
 import com.google.gson.*;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -128,6 +127,7 @@ public class People implements JsonDeserializer<People> {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
         People people = new People();
+
         people.setName(jsonObject.get("name").getAsString());
         people.setHeight(jsonObject.get("height").getAsInt());
         people.setMass(jsonObject.get("mass").getAsInt());

@@ -1,7 +1,5 @@
 package Entitys;
-
 import com.google.gson.*;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,7 @@ public class Planets implements JsonDeserializer<Planets> {
     private List<Planet> results;
 
     private Planets() {
-        this.results = new ArrayList<Planet>();
+        results = new ArrayList<Planet>();
     }
 
     /**
@@ -30,7 +28,7 @@ public class Planets implements JsonDeserializer<Planets> {
     }
 
     public void addPlanet(Planet planet) {
-        this.results.add(planet);
+        results.add(planet);
     }
 
     public Planets deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
