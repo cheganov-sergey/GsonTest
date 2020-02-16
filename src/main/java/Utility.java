@@ -6,10 +6,15 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 /**
- * Класс преобразования из Json в Java объекьы
+ * Класс преобразования из Json в Java объекьы и обратно
  */
 public class Utility {
 
+    /**
+     * Вызываем десериализацию json объекта в lava класс
+     * @param entitis - перечисляемый параметр
+     * @throws UnirestException
+     */
     public static void deserealizeEntites(Entitis entitis) throws UnirestException {
 
         Gson gson;
@@ -52,6 +57,10 @@ public class Utility {
 
     }
 
+    /**
+     * сериализуем объект java в json
+     * @param entitis
+     */
     public static void serialixedEntitis(Entitis entitis) {
         switch (entitis) {
             case PEOPLES:

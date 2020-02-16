@@ -17,8 +17,8 @@ public class Planets implements JsonDeserializer<Planets> {
     }
 
     /**
-     * СинглТон
-     * @return список планет
+     * Silgleton
+     * @return единственный экземпяр класса
      */
     public static Planets getPlanets() {
         if (instance == null) {

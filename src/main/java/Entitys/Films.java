@@ -15,6 +15,10 @@ public class Films implements JsonDeserializer<Films>{
             this.results = new ArrayList<Film>();
         }
 
+    /**
+     * Silgleton
+     * @return единственный экземпяр класса
+     */
         public static Films getFilms() {
             if (instance == null) {
                 instance = new Films();

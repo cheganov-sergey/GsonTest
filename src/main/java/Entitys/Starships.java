@@ -18,6 +18,10 @@ public class Starships implements JsonDeserializer<Starships> {
         this.results = new ArrayList<Starship>();
     }
 
+    /**
+     * Silgleton
+     * @return единственный экземпяр класса
+     */
     public static Starships getStarships() {
         if (instance == null) {
             instance = new Starships();

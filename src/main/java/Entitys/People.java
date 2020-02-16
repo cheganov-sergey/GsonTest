@@ -122,6 +122,14 @@ public class People implements JsonDeserializer<People> {
                 '}';
     }
 
+    /**
+     * десереализуем  в класс People
+     * @param jsonElement от куда
+     * @param type куда
+     * @param context контекст
+     * @return People
+     * @throws JsonParseException
+     */
     public People deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
 
         JsonObject jsonObject = jsonElement.getAsJsonObject();

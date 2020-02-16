@@ -16,6 +16,10 @@ public class Peoples implements JsonDeserializer<Peoples> {
         this.results = new ArrayList<People>();
     }
 
+    /**
+     * Silgleton
+     * @return единственный экземпяр класса
+     */
     public static Peoples getPeoples() {
         if (instance == null) {
             instance = new Peoples();
