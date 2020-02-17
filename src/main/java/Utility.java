@@ -60,6 +60,14 @@ public class Utility {
                         .registerTypeAdapter(Vehicles.class, Vehicles.getVegicles())
                         .create();
                 gson.fromJson(String.valueOf(jsonResponse.getBody()), Vehicles.class);
+
+            case SPECIES:
+                jsonResponse = Unirest.get("https://swapi.co/api/species/").asJson();
+                gson = new GsonBuilder()
+                        .registerTypeAdapter(Specie.class, new Specie())
+                        .registerTypeAdapter(Species.class, Species.getSpecies())
+                        .create();
+                gson.fromJson(String.valueOf(jsonResponse.getBody()), Species.class);
         }
 
 
@@ -81,6 +89,8 @@ public class Utility {
                 System.out.println(Films.getFilms());
             case VEHICLES:
                 System.out.println(Vehicles.getVegicles());
+            case SPECIES:
+                System.out.println(Species.getSpecies());
         }
     }
 

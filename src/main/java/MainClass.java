@@ -5,8 +5,8 @@ public class MainClass {
 
     public static void main(String[] args) throws UnirestException {
 
-       Utility.deserealizeEntites(VEHICLES);
-        Utility.serialixedEntitis(VEHICLES);
+       Utility.deserealizeEntites(SPECIES);
+        Utility.serialixedEntitis(SPECIES);
 
     }
 }
