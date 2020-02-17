@@ -50,7 +50,7 @@ public class Planets implements JsonDeserializer<Planets> {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        return gson.toJson(this);
+        return gson.toJson(results);
     }
 
 }

@@ -132,6 +132,6 @@ public class Vehicle implements JsonDeserializer<Vehicle> {
         vehicle.setEdited(jsonObject.get("edited").getAsString());
         vehicle.setUrl(jsonObject.get("url").getAsString());
 
-        return null;
+        return vehicle;
     }
 }

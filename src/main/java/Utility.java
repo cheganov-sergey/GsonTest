@@ -46,7 +46,7 @@ public class Utility {
                gson.fromJson(String.valueOf(jsonResponse.getBody()), Starships.class);
 
            case FILMS:
-               jsonResponse = Unirest.get("https://swapi.co/api/films/").asJson();
+               jsonResponse = Unirest.get("https://swapi.co/api/films").asJson();
                gson = new GsonBuilder()
                        .registerTypeAdapter(Film.class, new Film())
                        .registerTypeAdapter(Films.class, Films.getFilms())
@@ -54,7 +54,7 @@ public class Utility {
                gson.fromJson(String.valueOf(jsonResponse.getBody()), Films.class);
 
             case VEHICLES:
-                jsonResponse = Unirest.get("https://swapi.co/api/vehicles/").asJson();
+                jsonResponse = Unirest.get("https://swapi.co/api/vehicles").asJson();
                 gson = new GsonBuilder()
                         .registerTypeAdapter(Vehicle.class, new Vehicle())
                         .registerTypeAdapter(Vehicles.class, Vehicles.getVegicles())

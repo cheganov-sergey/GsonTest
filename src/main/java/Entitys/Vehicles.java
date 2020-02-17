@@ -29,7 +29,7 @@ public class Vehicles implements JsonDeserializer<Vehicles> {
     }
 
     public void addVehicle( Vehicle vehicle) {
-        this.results.add(vehicle);
+        results.add(vehicle);
     }
 
     /**
@@ -58,6 +58,6 @@ public class Vehicles implements JsonDeserializer<Vehicles> {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        return gson.toJson(this);
+        return gson.toJson(results);
     }
 }
