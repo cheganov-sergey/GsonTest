@@ -91,13 +91,16 @@ public class Specie implements JsonDeserializer<Specie> {
         this.url = url;
     }
 
+    public String getName() {
+       return this.name;
+    }
 
     public Specie deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
 
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Specie specie = new Specie();
 
-        //specie.setName(jsonObject.get("name").getAsString());
+        specie.setName(jsonObject.get("name").getAsString());
         specie.setClassification(jsonObject.get("classification").getAsString());
         specie.setDesignation(jsonObject.get("designation").getAsString());
         specie.setAverage_height(jsonObject.get("average_height").getAsInt());

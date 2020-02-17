@@ -28,7 +28,17 @@ public class Vehicles implements JsonDeserializer<Vehicles> {
         return instance;
     }
 
+    /**
+     * Добавляем транспорт в список (дубликаты игнорируются)
+     * @param vehicle транспорт
+     */
     public void addVehicle( Vehicle vehicle) {
+        boolean repeat = false;
+        for (Vehicle arr : results) {
+            if (arr.getName().equals(vehicle.getName()))
+                repeat = true;
+        }
+        if (!repeat)
         results.add(vehicle);
     }
 
@@ -41,11 +51,10 @@ public class Vehicles implements JsonDeserializer<Vehicles> {
      * @throws JsonParseException
      */
     public Vehicles deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Vehicles vehicles = Vehicles.getVegicles();
-
         JsonArray results = jsonObject.getAsJsonArray("results");
+
         for (JsonElement element : results) {
             Vehicle vehicle = context.deserialize(element, Vehicle.class);
             vehicles.addVehicle(vehicle);

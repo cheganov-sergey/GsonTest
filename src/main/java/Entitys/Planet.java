@@ -89,6 +89,10 @@ public class Planet implements JsonDeserializer<Planet> {
         this.url = url;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     /**
      * Десереализация планет из Json
      * @param jsonElement - откуда десереализуем

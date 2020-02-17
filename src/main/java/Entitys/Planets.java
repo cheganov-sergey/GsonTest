@@ -27,16 +27,25 @@ public class Planets implements JsonDeserializer<Planets> {
         return instance;
     }
 
+    /**
+     * Добавляем планету в список (дубликаты игнорируются)
+     * @param planet планета
+     */
     public void addPlanet(Planet planet) {
+        boolean repeat = false;
+        for (Planet arr : results) {
+            if (arr.getName().equals(planet.getName()))
+                repeat = true;
+        }
+        if (!repeat)
         results.add(planet);
     }
 
     public Planets deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Planets planets = Planets.getPlanets();
-
         JsonArray results = jsonObject.getAsJsonArray("results");
+
         for (JsonElement element : results) {
             Planet planet = context.deserialize(element, Planet.class);
             planets.addPlanet(planet);

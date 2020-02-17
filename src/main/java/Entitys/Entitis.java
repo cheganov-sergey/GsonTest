@@ -5,11 +5,11 @@ package Entitys;
  */
 public enum Entitis {
 
-    PLANETS,
-    PEOPLES,
-    STARSHIPS,
-    FILMS,
-    VEHICLES,
-    SPECIES
+    PLANETS,  // планеты
+    PEOPLES,  // персоонажи
+    STARSHIPS,  // космические корабли
+    FILMS,  // филимы
+    VEHICLES,  // транспортные средства
+    SPECIES  // виды
 
 }

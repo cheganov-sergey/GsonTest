@@ -104,6 +104,10 @@ public class Starship implements JsonDeserializer<Starship> {
         this.url = url;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     /**
      * Десериализатор
      * @param jsonElement что десереализуем

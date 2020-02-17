@@ -16,7 +16,6 @@ public class Utility {
      * @throws UnirestException
      */
     public static void deserealizeEntites(Entitis entitis) throws UnirestException {
-
         Gson gson;
         HttpResponse<JsonNode> jsonResponse;
 

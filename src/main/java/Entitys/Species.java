@@ -4,7 +4,6 @@ import com.google.gson.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Species implements JsonDeserializer<Species> {
 
@@ -21,16 +20,25 @@ public class Species implements JsonDeserializer<Species> {
         return instance;
     }
 
-    public void addSpecies(Specie results) {
-        this.results.add(results);
+    /**
+     * Добавляем вид в список (дубликаты игнорируются)
+     * @param res вид
+     */
+    public void addSpecies(Specie res) {
+        boolean repeat = false;
+        for (Specie spec : results) {
+            if (spec.getName().equals(res.getName()))
+                repeat = true;
+        }
+        if (!repeat)
+         this.results.add(res);
     }
 
     public Species deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Species species = Species.getSpecies();
-
         JsonArray results = jsonObject.getAsJsonArray("results");
+
         for (JsonElement element : results) {
             Specie specie = context.deserialize(element, Specie.class);
             species.addSpecies(specie);

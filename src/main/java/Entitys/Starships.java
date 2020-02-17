@@ -5,6 +5,7 @@ import com.google.gson.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Агрегатор комических кораблей (СинглТон)
@@ -29,16 +30,25 @@ public class Starships implements JsonDeserializer<Starships> {
         return instance;
     }
 
+    /**
+     * Добавляем космический корабль в список (дубликаты игнорируются)
+     * @param starship космический корабль
+     */
     public void addStarship(Starship starship) {
-        this.results.add(starship);
+        boolean repeat = false;
+        for (Starship arr : results) {
+            if (arr.getName().equals(starship.getName()))
+                repeat = true;
+        }
+        if (!repeat)
+               this.results.add(starship);
     }
 
     public Starships deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Starships starships = Starships.getStarships();
-
         JsonArray results = jsonObject.getAsJsonArray("results");
+
         for (JsonElement element : results) {
             Starship starship = context.deserialize(element, Starship.class);
             starships.addStarship(starship);

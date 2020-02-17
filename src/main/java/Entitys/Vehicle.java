@@ -95,6 +95,10 @@ public class Vehicle implements JsonDeserializer<Vehicle> {
         this.url = url;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     /**
      * Десериализатор класса
      * @param jsonElement что

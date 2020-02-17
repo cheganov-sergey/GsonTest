@@ -26,7 +26,17 @@ public class Films implements JsonDeserializer<Films>{
             return instance;
         }
 
-        public void addFilms(Film film) {
+    /**
+     * Добавляем фильм в список (дубликаты игнорируются)
+     * @param film фильм
+     */
+    public void addFilms(Film film) {
+            boolean repeat = false;
+            for (Film arr : results) {
+                if (arr.getTitle().equals(film.getTitle()))
+                    repeat = true;
+            }
+            if (!repeat)
             this.results.add(film);
         }
 
@@ -39,10 +49,10 @@ public class Films implements JsonDeserializer<Films>{
          * @throws JsonParseException
          */
         public Films deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-
             Films films = Films.getFilms();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
             JsonArray results = jsonObject.getAsJsonArray("results");
+
             for (JsonElement element : results) {
                 Film film = context.deserialize(element, Film.class);
                 films.addFilms(film);

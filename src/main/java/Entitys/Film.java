@@ -90,6 +90,10 @@ public class Film implements JsonDeserializer<Film> {
         this.starships.add(starships);
     }
 
+    public String getTitle() {
+        return this.title;
+    }
+
     /**
      * Десериализатор класса
      * @param jsonElement что десереализум

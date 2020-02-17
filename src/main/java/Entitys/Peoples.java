@@ -27,7 +27,17 @@ public class Peoples implements JsonDeserializer<Peoples> {
         return instance;
     }
 
+    /**
+     * Добавляем персоонажа в список (дубликаты игнорируются)
+     * @param people персоонаж
+     */
     public void addPeoples(People people) {
+        boolean repeat = false;
+        for (People arr : results) {
+            if (arr.getName().equals(people.getName()))
+                repeat = true;
+        }
+        if (!repeat)
         this.results.add(people);
     }
 
@@ -40,10 +50,10 @@ public class Peoples implements JsonDeserializer<Peoples> {
      * @throws JsonParseException
      */
     public Peoples deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-
         Peoples peoples = Peoples.getPeoples();
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         JsonArray results = jsonObject.getAsJsonArray("results");
+
         for (JsonElement element : results) {
             People people = context.deserialize(element, People.class);
             peoples.addPeoples(people);
