@@ -9,11 +9,6 @@ public class MainClass {
 
     public static void main(String[] args) throws UnirestException {
 
-//       Utility.getUtility().deserealizeEntites(PEOPLES);
-//       Utility.getUtility().deserealizeEntites(PEOPLES);
-//
-//       Utility.getUtility().serialixedEntitis(PEOPLES);
-
         System.out.println(Utility.getUtility().getPeopleByName("Darth Vader"));
         System.out.println(Utility.getUtility().getPeopleById(2));
         System.out.println(Utility.getUtility().getAllPeople());
