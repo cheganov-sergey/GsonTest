@@ -1,6 +1,4 @@
 import Entitys.*;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import static Entitys.Entitis.PLANETS;
