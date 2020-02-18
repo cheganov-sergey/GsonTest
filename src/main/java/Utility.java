@@ -115,7 +115,7 @@ public class Utility {
     }
 
     /**
-     * сериализуем объект java в json
+     * сериализуем объект java в json (путем переопределения метода toString)
      * @param entitis
      */
     public void serialixedEntitis(Entitis entitis) {
