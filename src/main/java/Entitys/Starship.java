@@ -149,4 +149,28 @@ public class Starship implements JsonDeserializer<Starship> {
 
         return starship;
     }
+
+    @Override
+    public String toString() {
+        return "Starship{" +
+                "name='" + name + '\'' +
+                ", model='" + model + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", cost_in_credits='" + cost_in_credits + '\'' +
+                ", length=" + length +
+                ", max_atmosphering_speed='" + max_atmosphering_speed + '\'' +
+                ", crew=" + crew +
+                ", passengers=" + passengers +
+                ", cargo_capacity=" + cargo_capacity +
+                ", consumables='" + consumables + '\'' +
+                ", hyperdrive_rating='" + hyperdrive_rating + '\'' +
+                ", MGLT=" + MGLT +
+                ", starship_class='" + starship_class + '\'' +
+                ", pilots=" + pilots +
+                ", films=" + films +
+                ", created='" + created + '\'' +
+                ", edited='" + edited + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

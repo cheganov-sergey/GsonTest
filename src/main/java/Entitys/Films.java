@@ -26,6 +26,10 @@ public class Films implements JsonDeserializer<Films>{
             return instance;
         }
 
+        public List<Film> getAllFilms() {
+            return results;
+        }
+
     /**
      * Добавляем фильм в список (дубликаты игнорируются)
      * @param film фильм

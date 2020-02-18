@@ -41,6 +41,10 @@ public class Peoples implements JsonDeserializer<Peoples> {
         this.results.add(people);
     }
 
+    public List<People> getAllPeoples() {
+        return this.results;
+    }
+
     /**
      * Десериализатор json
      * @param jsonElement  - десериализируемый объект

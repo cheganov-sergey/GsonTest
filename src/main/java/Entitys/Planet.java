@@ -93,6 +93,10 @@ public class Planet implements JsonDeserializer<Planet> {
         return this.name;
     }
 
+    public int getDiameter() {
+       return this.diameter;
+    }
+
     /**
      * Десереализация планет из Json
      * @param jsonElement - откуда десереализуем
@@ -131,5 +135,25 @@ public class Planet implements JsonDeserializer<Planet> {
         planet.setUrl(jsonObject.get("url").getAsString());
 
        return planet;
+    }
+
+    @Override
+    public String toString() {
+        return "Planet{" +
+                "name='" + name + '\'' +
+                ", rotation_period=" + rotation_period +
+                ", orbital_period=" + orbital_period +
+                ", diameter=" + diameter +
+                ", climate='" + climate + '\'' +
+                ", gravity='" + gravity + '\'' +
+                ", terrain='" + terrain + '\'' +
+                ", surface_water='" + surface_water + '\'' +
+                ", population='" + population + '\'' +
+                ", residents=" + residents +
+                ", films=" + films +
+                ", created='" + created + '\'' +
+                ", edited='" + edited + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

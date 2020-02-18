@@ -145,4 +145,22 @@ public class Film implements JsonDeserializer<Film> {
 
         return film;
     }
+
+    @Override
+    public String toString() {
+        return  "title='" + title + '\'' +
+                ", episode_id=" + episode_id +
+                ", opening_crawl='" + opening_crawl + '\'' +
+                ", director='" + director + '\'' +
+                ", producer='" + producer + '\'' +
+                ", release_date='" + release_date + '\'' +
+                ", characters=" + characters +
+                ", planets=" + planets +
+                ", starships=" + starships +
+                ", vehicles=" + vehicles +
+                ", species=" + species +
+                ", created='" + created + '\'' +
+                ", edited='" + edited + '\'' +
+                ", url='" + url + '\'' ;
+    }
 }

@@ -1,11 +1,8 @@
 package Entitys;
-
 import com.google.gson.*;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Агрегатор комических кораблей (СинглТон)
@@ -28,6 +25,10 @@ public class Starships implements JsonDeserializer<Starships> {
             instance = new Starships();
         }
         return instance;
+    }
+
+    public List<Starship> getAllStarshops() {
+        return this.results;
     }
 
     /**

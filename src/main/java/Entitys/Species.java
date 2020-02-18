@@ -34,6 +34,10 @@ public class Species implements JsonDeserializer<Species> {
          this.results.add(res);
     }
 
+    public List<Specie> getAllSpecies() {
+        return results;
+    }
+
     public Species deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Species species = Species.getSpecies();

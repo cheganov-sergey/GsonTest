@@ -127,4 +127,25 @@ public class Specie implements JsonDeserializer<Specie> {
 
         return specie;
     }
+
+    @Override
+    public String toString() {
+        return "Specie{" +
+                "name='" + name + '\'' +
+                ", classification='" + classification + '\'' +
+                ", designation='" + designation + '\'' +
+                ", average_height=" + average_height +
+                ", skin_colors='" + skin_colors + '\'' +
+                ", hair_colors='" + hair_colors + '\'' +
+                ", eye_colors='" + eye_colors + '\'' +
+                ", average_lifespan='" + average_lifespan + '\'' +
+                ", homeworld='" + homeworld + '\'' +
+                ", language='" + language + '\'' +
+                ", people=" + people +
+                ", films=" + films +
+                ", created='" + created + '\'' +
+                ", edited='" + edited + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

@@ -42,6 +42,10 @@ public class Vehicles implements JsonDeserializer<Vehicles> {
         results.add(vehicle);
     }
 
+    public List<Vehicle> getAllVehicles() {
+        return this.results;
+    }
+
     /**
      * десериализатор класса
      * @param jsonElement что дессериализуем

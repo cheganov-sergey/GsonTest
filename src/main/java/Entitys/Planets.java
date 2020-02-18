@@ -41,6 +41,10 @@ public class Planets implements JsonDeserializer<Planets> {
         results.add(planet);
     }
 
+    public List<Planet> getAllPlants() {
+        return this.results;
+    }
+
     public Planets deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Planets planets = Planets.getPlanets();
