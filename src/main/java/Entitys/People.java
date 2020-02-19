@@ -34,6 +34,15 @@ public class People implements JsonDeserializer<People> {
         starships = new ArrayList<String>();
     }
 
+    public People(String name) {        /// замена null
+        this.name = name;
+        films = new ArrayList<String>();
+        species = new ArrayList<String>();
+        vehicles = new ArrayList<String>();
+        starships = new ArrayList<String>();
+    }
+
+
     // Сеттеры:
 
     public void setName(String name) {
@@ -157,22 +166,10 @@ public class People implements JsonDeserializer<People> {
 
     @Override
     public String toString() {
-        return  "name='" + name + '\'' +
-                ", height=" + height +
-                ", mass=" + mass +
-                ", hair_color='" + hair_color + '\'' +
-                ", skin_color='" + skin_color + '\'' +
-                ", eye_color='" + eye_color + '\'' +
-                ", birth_year='" + birth_year + '\'' +
-                ", gender='" + gender + '\'' +
-                ", homeworld='" + homeworld + '\'' +
-                ", films=" + films +
-                ", species=" + species +
-                ", vehicles=" + vehicles +
-                ", starships=" + starships +
-                ", created='" + created + '\'' +
-                ", edited='" + edited + '\'' +
-                ", url='" + url + '\''  ;
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        return "Человек: " + gson.toJson(this);
     }
 }
 

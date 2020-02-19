@@ -31,6 +31,12 @@ public class Starship implements JsonDeserializer<Starship> {
         this.films = new ArrayList<String>();
     }
 
+    public Starship(String name) {   // Замена null
+        this.name = name;
+        this.pilots = new ArrayList<String>();
+        this.films = new ArrayList<String>();
+    }
+
     /////////////////////// Setters //////////////////////////////////
     public void setName(String name) {
         this.name = name;
@@ -152,25 +158,9 @@ public class Starship implements JsonDeserializer<Starship> {
 
     @Override
     public String toString() {
-        return "Starship{" +
-                "name='" + name + '\'' +
-                ", model='" + model + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", cost_in_credits='" + cost_in_credits + '\'' +
-                ", length=" + length +
-                ", max_atmosphering_speed='" + max_atmosphering_speed + '\'' +
-                ", crew=" + crew +
-                ", passengers=" + passengers +
-                ", cargo_capacity=" + cargo_capacity +
-                ", consumables='" + consumables + '\'' +
-                ", hyperdrive_rating='" + hyperdrive_rating + '\'' +
-                ", MGLT=" + MGLT +
-                ", starship_class='" + starship_class + '\'' +
-                ", pilots=" + pilots +
-                ", films=" + films +
-                ", created='" + created + '\'' +
-                ", edited='" + edited + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        return "Космический корабль: " + gson.toJson(this);
     }
 }

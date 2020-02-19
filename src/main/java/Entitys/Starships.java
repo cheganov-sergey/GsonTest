@@ -20,7 +20,7 @@ public class Starships implements JsonDeserializer<Starships> {
      * Singleton
      * @return единственный экземпяр класса
      */
-    public static Starships getStarships() {
+    public static Starships instance() {
         if (instance == null) {
             instance = new Starships();
         }
@@ -47,7 +47,7 @@ public class Starships implements JsonDeserializer<Starships> {
 
     public Starships deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        Starships starships = Starships.getStarships();
+        Starships starships = Starships.instance();
         JsonArray results = jsonObject.getAsJsonArray("results");
 
         for (JsonElement element : results) {

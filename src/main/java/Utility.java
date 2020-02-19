@@ -16,7 +16,7 @@ public class Utility {
 
     private Utility() {}
 
-    public static Utility getUtility() {
+    public static Utility instance() {
         if (instance == null)
             instance = new Utility();
         return instance;
@@ -37,7 +37,7 @@ public class Utility {
                     jsonResponse = Unirest.get("https://swapi.co/api/planets/").asJson();
                     gson = new GsonBuilder()
                             .registerTypeAdapter(Planet.class, new Planet())
-                            .registerTypeAdapter(Planets.class, Planets.getPlanets())
+                            .registerTypeAdapter(Planets.class, Planets.instance())
                             .create();
                     gson.fromJson(String.valueOf(jsonResponse.getBody()), Planets.class);
                 }
@@ -50,7 +50,7 @@ public class Utility {
                     jsonResponse = Unirest.get("https://swapi.co/api/people/").asJson();
                     gson = new GsonBuilder()
                             .registerTypeAdapter(People.class, new People())
-                            .registerTypeAdapter(Peoples.class, Peoples.getPeoples())
+                            .registerTypeAdapter(Peoples.class, Peoples.instance())
                             .create();
                     gson.fromJson(String.valueOf(jsonResponse.getBody()), Peoples.class);
                 }
@@ -63,7 +63,7 @@ public class Utility {
                 jsonResponse = Unirest.get("https://swapi.co/api/starships/").asJson();
                 gson = new GsonBuilder()
                         .registerTypeAdapter(Starship.class, new Starship())
-                        .registerTypeAdapter(Starships.class, Starships.getStarships())
+                        .registerTypeAdapter(Starships.class, Starships.instance())
                         .create();
                gson.fromJson(String.valueOf(jsonResponse.getBody()), Starships.class);
                }
@@ -76,7 +76,7 @@ public class Utility {
                    jsonResponse = Unirest.get("https://swapi.co/api/films").asJson();
                    gson = new GsonBuilder()
                            .registerTypeAdapter(Film.class, new Film())
-                           .registerTypeAdapter(Films.class, Films.getFilms())
+                           .registerTypeAdapter(Films.class, Films.instance())
                            .create();
                    gson.fromJson(String.valueOf(jsonResponse.getBody()), Films.class);
                }
@@ -89,7 +89,7 @@ public class Utility {
                     jsonResponse = Unirest.get("https://swapi.co/api/vehicles").asJson();
                     gson = new GsonBuilder()
                             .registerTypeAdapter(Vehicle.class, new Vehicle())
-                            .registerTypeAdapter(Vehicles.class, Vehicles.getVegicles())
+                            .registerTypeAdapter(Vehicles.class, Vehicles.instance())
                             .create();
                     gson.fromJson(String.valueOf(jsonResponse.getBody()), Vehicles.class);
                 }
@@ -102,7 +102,7 @@ public class Utility {
                     jsonResponse = Unirest.get("https://swapi.co/api/species/").asJson();
                     gson = new GsonBuilder()
                             .registerTypeAdapter(Specie.class, new Specie())
-                            .registerTypeAdapter(Species.class, Species.getSpecies())
+                            .registerTypeAdapter(Species.class, Species.instance())
                             .create();
                     gson.fromJson(String.valueOf(jsonResponse.getBody()), Species.class);
                 }
@@ -121,17 +121,17 @@ public class Utility {
     public void serialixedEntitis(Entitis entitis) {
         switch (entitis) {
             case PEOPLES:
-                System.out.println(Peoples.getPeoples());
+                System.out.println(Peoples.instance());
             case PLANETS:
-                System.out.println(Planets.getPlanets());
+                System.out.println(Planets.instance());
             case STARSHIPS:
-                System.out.println(Starships.getStarships());
+                System.out.println(Starships.instance());
             case FILMS:
-                System.out.println(Films.getFilms());
+                System.out.println(Films.instance());
             case VEHICLES:
-                System.out.println(Vehicles.getVegicles());
+                System.out.println(Vehicles.instance());
             case SPECIES:
-                System.out.println(Species.getSpecies());
+                System.out.println(Species.instance());
         }
     }
 
@@ -149,11 +149,11 @@ public class Utility {
      * @return объект с указаным именим
      */
     public People getPeopleByName(String name) {
-        if (Peoples.getPeoples().getAllPeoples().isEmpty()) {
+        if (Peoples.instance().getAllPeoples().isEmpty()) {
             deserealizeEntites(Entitis.PEOPLES);
         }
         People people = new People();
-        for (People all : Peoples.getPeoples().getAllPeoples()) {
+        for (People all : Peoples.instance().getAllPeoples()) {
             if (all.getName().equals(name))
                 people = all;
         }
@@ -162,15 +162,15 @@ public class Utility {
 
     /**
      * Поиск по id. Сперва проверяем существует ли список объктов, если нет то десериализуем кго из json.
-     * @param i - номер id
+     * @param id - номер id
      * @return объект
      */
-    public People getPeopleById(int i) {
-        if (Peoples.getPeoples().getAllPeoples().isEmpty()) {
+    public People getPeopleById(int id) {
+        if (Peoples.instance().getAllPeoples().isEmpty()) {
             deserealizeEntites(Entitis.PEOPLES);
         }
-        if (Peoples.getPeoples().getAllPeoples().size() > i) {
-            return Peoples.getPeoples().getAllPeoples().get(i);
+        if (Peoples.instance().getAllPeoples().size() > id) {
+            return Peoples.instance().getAllPeoples().get(id + 1);
         }
         return null;
     }
@@ -180,166 +180,166 @@ public class Utility {
      * @return - массив объектов
      */
     public List<People> getAllPeople() {
-        if (Peoples.getPeoples().getAllPeoples().isEmpty()) {
+        if (Peoples.instance().getAllPeoples().isEmpty()) {
             deserealizeEntites(Entitis.PEOPLES);
         }
-        return Peoples.getPeoples().getAllPeoples();
+        return Peoples.instance().getAllPeoples();
     }
 
     ///////////////////// Планиеты ////////////////////////
 
     public Planet getPlanetByName(String name) {
-        if (Planets.getPlanets().getAllPlants().isEmpty()) {
+        if (Planets.instance().getAllPlants().isEmpty()) {
             deserealizeEntites(Entitis.PLANETS);
         }
         Planet planet = new Planet();
-        for (Planet all : Planets.getPlanets().getAllPlants()) {
+        for (Planet all : Planets.instance().getAllPlants()) {
             if (all.getName().equals(name))
                 planet = all;
         }
         return planet;
     }
 
-    public Planet getPlanetById(int i) {
-        if (Planets.getPlanets().getAllPlants().isEmpty()) {
+    public Planet getPlanetById(int id) {
+        if (Planets.instance().getAllPlants().isEmpty()) {
             deserealizeEntites(Entitis.PLANETS);
         }
-        if (Planets.getPlanets().getAllPlants().size() > i) {
-            return Planets.getPlanets().getAllPlants().get(i);
+        if (Planets.instance().getAllPlants().size() > id) {
+            return Planets.instance().getAllPlants().get(id + 1);
         }
-        return null;
+        return new Planet("Данная планета не найдена");
     }
 
     public List<Planet> getAllPlanet() {
-        if (Planets.getPlanets().getAllPlants().isEmpty()) {
+        if (Planets.instance().getAllPlants().isEmpty()) {
             deserealizeEntites(Entitis.PLANETS);
         }
-        return Planets.getPlanets().getAllPlants();
+        return Planets.instance().getAllPlants();
     }
 
     ///////////////// Фильмы ////////////////////////
 
     public Film getFilmByName(String name) {
-        if (Films.getFilms().getAllFilms().isEmpty()) {
+        if (Films.instance().getAllFilms().isEmpty()) {
             deserealizeEntites(Entitis.FILMS);
         }
         Film it = new Film();
-        for (Film all : Films.getFilms().getAllFilms()) {
+        for (Film all : Films.instance().getAllFilms()) {
             if (all.getTitle().equals(name))
                 it = all;
         }
         return it;
     }
 
-    public Film getFilmById(int i) {
-        if (Films.getFilms().getAllFilms().isEmpty()) {
+    public Film getFilmById(int id) {
+        if (Films.instance().getAllFilms().isEmpty()) {
             deserealizeEntites(Entitis.FILMS);
         }
-        if (Films.getFilms().getAllFilms().size() > i) {
-            return Films.getFilms().getAllFilms().get(i);
+        if (Films.instance().getAllFilms().size() > id) {
+            return Films.instance().getAllFilms().get(id + 1);
         }
-        return null;
+        return new Film("Данный фильм не найден");
     }
 
     public List<Film> getAllFilms() {
-        if (Films.getFilms().getAllFilms().isEmpty()) {
+        if (Films.instance().getAllFilms().isEmpty()) {
             deserealizeEntites(Entitis.FILMS);
         }
-        return Films.getFilms().getAllFilms();
+        return Films.instance().getAllFilms();
     }
 
     ////////////////////// Species /////////////////////
 
     public Specie getSpeciesByName(String name) {
-        if (Species.getSpecies().getAllSpecies().isEmpty()) {
+        if (Species.instance().getAllSpecies().isEmpty()) {
             deserealizeEntites(Entitis.SPECIES);
         }
         Specie it = new Specie();
-        for (Specie all : Species.getSpecies().getAllSpecies()) {
+        for (Specie all : Species.instance().getAllSpecies()) {
             if (all.getName().equals(name))
                 it = all;
         }
         return it;
     }
 
-    public Specie getSpeciesById(int i) {
-        if (Species.getSpecies().getAllSpecies().isEmpty()) {
+    public Specie getSpeciesById(int id) {
+        if (Species.instance().getAllSpecies().isEmpty()) {
             deserealizeEntites(Entitis.SPECIES);
         }
-        if (Species.getSpecies().getAllSpecies().size() > i) {
-            return Species.getSpecies().getAllSpecies().get(i);
+        if (Species.instance().getAllSpecies().size() > id) {
+            return Species.instance().getAllSpecies().get(id + 1);
         }
-        return null;
+        return new Specie("Данное существо не найдено");
     }
 
     public List<Specie> getAllSpecies() {
-        if (Species.getSpecies().getAllSpecies().isEmpty()) {
+        if (Species.instance().getAllSpecies().isEmpty()) {
             deserealizeEntites(Entitis.SPECIES);
         }
-        return Species.getSpecies().getAllSpecies();
+        return Species.instance().getAllSpecies();
     }
 
     //////////////////// Starships /////////////////////////
 
     public Starship getStarshipByName(String name) {
-        if (Starships.getStarships().getAllStarshops().isEmpty()) {
+        if (Starships.instance().getAllStarshops().isEmpty()) {
             deserealizeEntites(Entitis.STARSHIPS);
         }
         Starship it = new Starship();
-        for (Starship all : Starships.getStarships().getAllStarshops()) {
+        for (Starship all : Starships.instance().getAllStarshops()) {
             if (all.getName().equals(name))
                 it = all;
         }
         return it;
     }
 
-    public Starship getStarshipsById(int i) {
-        if (Starships.getStarships().getAllStarshops().isEmpty()) {
+    public Starship getStarshipsById(int id) {
+        if (Starships.instance().getAllStarshops().isEmpty()) {
             deserealizeEntites(Entitis.STARSHIPS);
         }
-        if (Starships.getStarships().getAllStarshops().size() > i) {
-            return Starships.getStarships().getAllStarshops().get(i);
+        if (Starships.instance().getAllStarshops().size() > id) {
+            return Starships.instance().getAllStarshops().get(id + 1);
         }
-        return null;
+        return new Starship("Данный космический корабль не найдне");
     }
 
     public List<Starship> getAllStarship() {
-        if (Starships.getStarships().getAllStarshops().isEmpty()) {
+        if (Starships.instance().getAllStarshops().isEmpty()) {
             deserealizeEntites(Entitis.STARSHIPS);
         }
-        return Starships.getStarships().getAllStarshops();
+        return Starships.instance().getAllStarshops();
     }
 
     /////////////////////// Vehicles //////////////////////////////
 
     public Vehicle getVehicleByName(String name) {
-        if (Vehicles.getVegicles().getAllVehicles().isEmpty()) {
+        if (Vehicles.instance().getAllVehicles().isEmpty()) {
             deserealizeEntites(Entitis.VEHICLES);
         }
         Vehicle it = new Vehicle();
-        for (Vehicle all : Vehicles.getVegicles().getAllVehicles()) {
+        for (Vehicle all : Vehicles.instance().getAllVehicles()) {
             if (all.getName().equals(name))
                 it = all;
         }
         return it;
     }
 
-    public Vehicle getVehicleById(int i) {
-        if (Vehicles.getVegicles().getAllVehicles().isEmpty()) {
+    public Vehicle getVehicleById(int id) {
+        if (Vehicles.instance().getAllVehicles().isEmpty()) {
             deserealizeEntites(Entitis.VEHICLES);
         }
-        if (Vehicles.getVegicles().getAllVehicles().size() > i) {
-            return Vehicles.getVegicles().getAllVehicles().get(i);
+        if (Vehicles.instance().getAllVehicles().size() > id) {
+            return Vehicles.instance().getAllVehicles().get(id + 1);
         }
         else
-            return null;
+            return new Vehicle("Данное транспортное средство не найдено");
     }
 
     public List<Vehicle> getAllVehicles() {
-        if (Vehicles.getVegicles().getAllVehicles().isEmpty()) {
+        if (Vehicles.instance().getAllVehicles().isEmpty()) {
             deserealizeEntites(Entitis.VEHICLES);
         }
-        return Vehicles.getVegicles().getAllVehicles();
+        return Vehicles.instance().getAllVehicles();
     }
 
 }

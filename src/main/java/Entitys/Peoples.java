@@ -20,7 +20,7 @@ public class Peoples implements JsonDeserializer<Peoples> {
      * Silgleton
      * @return единственный экземпяр класса
      */
-    public static Peoples getPeoples() {
+    public static Peoples instance() {
         if (instance == null) {
             instance = new Peoples();
         }
@@ -54,7 +54,7 @@ public class Peoples implements JsonDeserializer<Peoples> {
      * @throws JsonParseException
      */
     public Peoples deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-        Peoples peoples = Peoples.getPeoples();
+        Peoples peoples = Peoples.instance();
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         JsonArray results = jsonObject.getAsJsonArray("results");
 

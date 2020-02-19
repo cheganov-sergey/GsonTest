@@ -30,6 +30,12 @@ public class Specie implements JsonDeserializer<Specie> {
        this.films = new ArrayList<String>();
     }
 
+    public Specie(String name) {
+        this.name = name;
+        this.people = new ArrayList<String>();
+        this.films = new ArrayList<String>();
+    }
+
     ///////////////////// Setters ////////////////////////
     public void setName(String name) {
         this.name = name;
@@ -130,22 +136,9 @@ public class Specie implements JsonDeserializer<Specie> {
 
     @Override
     public String toString() {
-        return "Specie{" +
-                "name='" + name + '\'' +
-                ", classification='" + classification + '\'' +
-                ", designation='" + designation + '\'' +
-                ", average_height=" + average_height +
-                ", skin_colors='" + skin_colors + '\'' +
-                ", hair_colors='" + hair_colors + '\'' +
-                ", eye_colors='" + eye_colors + '\'' +
-                ", average_lifespan='" + average_lifespan + '\'' +
-                ", homeworld='" + homeworld + '\'' +
-                ", language='" + language + '\'' +
-                ", people=" + people +
-                ", films=" + films +
-                ", created='" + created + '\'' +
-                ", edited='" + edited + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        return "Существо: " + gson.toJson(this);
     }
 }

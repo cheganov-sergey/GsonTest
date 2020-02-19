@@ -20,7 +20,7 @@ public class Planets implements JsonDeserializer<Planets> {
      * Silgleton
      * @return единственный экземпяр класса
      */
-    public static Planets getPlanets() {
+    public static Planets instance() {
         if (instance == null) {
             instance = new Planets();
         }
@@ -47,7 +47,7 @@ public class Planets implements JsonDeserializer<Planets> {
 
     public Planets deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        Planets planets = Planets.getPlanets();
+        Planets planets = Planets.instance();
         JsonArray results = jsonObject.getAsJsonArray("results");
 
         for (JsonElement element : results) {

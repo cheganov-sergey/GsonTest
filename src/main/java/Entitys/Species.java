@@ -14,7 +14,7 @@ public class Species implements JsonDeserializer<Species> {
         this.results = new ArrayList<Specie>();
     }
 
-    public static Species getSpecies() {
+    public static Species instance() {
         if (instance == null)
             instance = new Species();
         return instance;
@@ -40,7 +40,7 @@ public class Species implements JsonDeserializer<Species> {
 
     public Species deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        Species species = Species.getSpecies();
+        Species species = Species.instance();
         JsonArray results = jsonObject.getAsJsonArray("results");
 
         for (JsonElement element : results) {

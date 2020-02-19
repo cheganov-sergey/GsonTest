@@ -19,7 +19,7 @@ public class Films implements JsonDeserializer<Films>{
      * Silgleton
      * @return единственный экземпяр класса
      */
-        public static Films getFilms() {
+        public static Films instance() {
             if (instance == null) {
                 instance = new Films();
             }
@@ -53,7 +53,7 @@ public class Films implements JsonDeserializer<Films>{
          * @throws JsonParseException
          */
         public Films deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
-            Films films = Films.getFilms();
+            Films films = Films.instance();
             JsonObject jsonObject = jsonElement.getAsJsonObject();
             JsonArray results = jsonObject.getAsJsonArray("results");
 

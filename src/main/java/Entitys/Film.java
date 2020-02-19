@@ -26,7 +26,16 @@ public class Film implements JsonDeserializer<Film> {
 
     ///////////////////// Constructor ////////////////////////
     public Film() {
-                characters = new ArrayList<String>();
+        characters = new ArrayList<String>();
+        planets = new ArrayList<String>();
+        vehicles = new ArrayList<String>();
+        species = new ArrayList<String>();
+        starships = new ArrayList<String>();
+    }
+
+    public Film(String title) {   // замена null
+        this.title = title;
+        characters = new ArrayList<String>();
         planets = new ArrayList<String>();
         vehicles = new ArrayList<String>();
         species = new ArrayList<String>();
@@ -148,19 +157,9 @@ public class Film implements JsonDeserializer<Film> {
 
     @Override
     public String toString() {
-        return  "title='" + title + '\'' +
-                ", episode_id=" + episode_id +
-                ", opening_crawl='" + opening_crawl + '\'' +
-                ", director='" + director + '\'' +
-                ", producer='" + producer + '\'' +
-                ", release_date='" + release_date + '\'' +
-                ", characters=" + characters +
-                ", planets=" + planets +
-                ", starships=" + starships +
-                ", vehicles=" + vehicles +
-                ", species=" + species +
-                ", created='" + created + '\'' +
-                ", edited='" + edited + '\'' +
-                ", url='" + url + '\'' ;
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        return "Фильм: " + gson.toJson(this);
     }
 }

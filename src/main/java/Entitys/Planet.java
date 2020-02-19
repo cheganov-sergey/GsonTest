@@ -32,6 +32,12 @@ public class Planet implements JsonDeserializer<Planet> {
        this.films = new ArrayList<String>();
    }
 
+    public Planet(String name) {  // замена null
+       this.name = name;
+        this.residents = new ArrayList<String>();
+        this.films = new ArrayList<String>();
+    }
+
    ///////////////////// Setters /////////////////////////////
     public void setName(String name) {
         this.name = name;
@@ -139,21 +145,9 @@ public class Planet implements JsonDeserializer<Planet> {
 
     @Override
     public String toString() {
-        return "Planet{" +
-                "name='" + name + '\'' +
-                ", rotation_period=" + rotation_period +
-                ", orbital_period=" + orbital_period +
-                ", diameter=" + diameter +
-                ", climate='" + climate + '\'' +
-                ", gravity='" + gravity + '\'' +
-                ", terrain='" + terrain + '\'' +
-                ", surface_water='" + surface_water + '\'' +
-                ", population='" + population + '\'' +
-                ", residents=" + residents +
-                ", films=" + films +
-                ", created='" + created + '\'' +
-                ", edited='" + edited + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        return "Планета: " + gson.toJson(this);
     }
 }

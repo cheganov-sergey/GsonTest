@@ -26,10 +26,19 @@ public class Vehicle implements JsonDeserializer<Vehicle> {
     private String edited;
     private String url;
 
+    /////////////////////// Constructors //////////////////////////////
     public Vehicle() {
         this.pilots = new ArrayList<String>();
         this.films = new ArrayList<String>();
     }
+
+    public Vehicle(String name) {
+        this.name = name;
+        this.pilots = new ArrayList<String>();
+        this.films = new ArrayList<String>();
+    }
+
+    /////////////////////// Setters ////////////////////////////
 
     public void setName(String name) {
         this.name = name;
@@ -141,23 +150,9 @@ public class Vehicle implements JsonDeserializer<Vehicle> {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-                "name='" + name + '\'' +
-                ", model='" + model + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", cost_in_credits='" + cost_in_credits + '\'' +
-                ", length=" + length +
-                ", max_atmosphering_speed='" + max_atmosphering_speed + '\'' +
-                ", crew=" + crew +
-                ", passengers=" + passengers +
-                ", cargo_capacity='" + cargo_capacity + '\'' +
-                ", consumables='" + consumables + '\'' +
-                ", vehicle_class='" + vehicle_class + '\'' +
-                ", pilots=" + pilots +
-                ", films=" + films +
-                ", created='" + created + '\'' +
-                ", edited='" + edited + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        return "Транспортное средство: " + gson.toJson(this);
     }
 }

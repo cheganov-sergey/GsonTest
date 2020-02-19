@@ -22,7 +22,7 @@ public class Vehicles implements JsonDeserializer<Vehicles> {
      * Singleton
      * @return единственный экземпяр класса
      */
-    public static Vehicles getVegicles() {
+    public static Vehicles instance() {
         if (instance == null)
             instance = new Vehicles();
         return instance;
@@ -56,7 +56,7 @@ public class Vehicles implements JsonDeserializer<Vehicles> {
      */
     public Vehicles deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        Vehicles vehicles = Vehicles.getVegicles();
+        Vehicles vehicles = Vehicles.instance();
         JsonArray results = jsonObject.getAsJsonArray("results");
 
         for (JsonElement element : results) {
