@@ -15,7 +15,7 @@ public class Client {
 
     private Client() {}
 
-    public static Client instance() {
+    public static Client instance() {         // Singleton
         if (instance == null)
             instance = new Client();
         return instance;
@@ -28,11 +28,11 @@ public class Client {
      * @return объект с указаным именим
      */
     public People getPeopleByName(String name) {
-        if (Peoples.instance().getAllPeoples().isEmpty()) {
+        if (Peoples.instance().getAllPeoples().isEmpty()) {             // если список пуст - заполняем его из Json
             Utility.instance().deserealizeEntites(Entitis.PEOPLES);
         }
         People people = new People();
-        for (People all : Peoples.instance().getAllPeoples()) {
+        for (People all : Peoples.instance().getAllPeoples()) {     // ищем по имени
             if (all.getName().equals(name))
                 people = all;
         }
@@ -46,10 +46,10 @@ public class Client {
      */
     public People getPeopleById(int id) {
         if (Peoples.instance().getAllPeoples().isEmpty()) {
-            Utility.instance().deserealizeEntites(Entitis.PEOPLES);
+            Utility.instance().deserealizeEntites(Entitis.PEOPLES);  // если список пуст - заполняем его из Json
         }
         if (Peoples.instance().getAllPeoples().size() > id) {
-            return Peoples.instance().getAllPeoples().get(id - 1);
+            return Peoples.instance().getAllPeoples().get(id - 1);      // Ищемб вычитаем 1 что бы id соответствовал номеру элемента в массиве
         }
         return new People("Данный человек не найден");
     }
@@ -59,14 +59,19 @@ public class Client {
      * @return - массив объектов
      */
     public List<People> getAllPeople() {
-        if (Peoples.instance().getAllPeoples().isEmpty()) {
+        if (Peoples.instance().getAllPeoples().isEmpty()) {    // если список пуст - заполняем его из Json
             Utility.instance().deserealizeEntites(Entitis.PEOPLES);
         }
         return Peoples.instance().getAllPeoples();
     }
 
-    ///////////////////// Планиеты ////////////////////////
+    ///////////////////// Планеты ////////////////////////
 
+    /**
+     * поиск планеты по имени
+     * @param name имя
+     * @return планета
+     */
     public Planet getPlanetByName(String name) {
         if (Planets.instance().getAllPlants().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.PLANETS);
@@ -79,6 +84,11 @@ public class Client {
         return planet;
     }
 
+    /**
+     * поиск планеты по id
+     * @param id id
+     * @return планета
+     */
     public Planet getPlanetById(int id) {
         if (Planets.instance().getAllPlants().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.PLANETS);
@@ -89,6 +99,10 @@ public class Client {
         return new Planet("Данная планета не найдена");
     }
 
+    /**
+     * Вернуть все планеты
+     * @return лист планет
+     */
     public List<Planet> getAllPlanet() {
         if (Planets.instance().getAllPlants().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.PLANETS);
@@ -98,6 +112,11 @@ public class Client {
 
     ///////////////// Фильмы ////////////////////////
 
+    /**
+     * Поиск фильма по названию
+     * @param name название
+     * @return фильм
+     */
     public Film getFilmByName(String name) {
         if (Films.instance().getAllFilms().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.FILMS);
@@ -110,6 +129,11 @@ public class Client {
         return it;
     }
 
+    /**
+     * поиск фильма по id
+     * @param id id
+     * @return фильм
+     */
     public Film getFilmById(int id) {
         if (Films.instance().getAllFilms().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.FILMS);
@@ -120,6 +144,10 @@ public class Client {
         return new Film("Данный фильм не найден");
     }
 
+    /**
+     * возвращаем все фильмы
+     * @return лист фильмов
+     */
     public List<Film> getAllFilms() {
         if (Films.instance().getAllFilms().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.FILMS);
@@ -129,6 +157,11 @@ public class Client {
 
     ////////////////////// Species /////////////////////
 
+    /**
+     * поиск существ по имени
+     * @param name имя
+     * @return существо
+     */
     public Specie getSpeciesByName(String name) {
         if (Species.instance().getAllSpecies().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.SPECIES);
@@ -141,6 +174,11 @@ public class Client {
         return it;
     }
 
+    /**
+     * поиск существ по id
+     * @param id id
+     * @return существо
+     */
     public Specie getSpeciesById(int id) {
         if (Species.instance().getAllSpecies().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.SPECIES);
@@ -151,6 +189,10 @@ public class Client {
         return new Specie("Данное существо не найдено");
     }
 
+    /**
+     * возвращаем всех существ
+     * @return лист существ
+     */
     public List<Specie> getAllSpecies() {
         if (Species.instance().getAllSpecies().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.SPECIES);
@@ -160,6 +202,11 @@ public class Client {
 
     //////////////////// Starships /////////////////////////
 
+    /**
+     * Посик комического корадя по названию
+     * @param name название
+     * @return космический корабль
+     */
     public Starship getStarshipByName(String name) {
         if (Starships.instance().getAllStarshops().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.STARSHIPS);
@@ -172,6 +219,11 @@ public class Client {
         return it;
     }
 
+    /**
+     * поиск космического корадабя по id
+     * @param id id
+     * @return корабль
+     */
     public Starship getStarshipsById(int id) {
         if (Starships.instance().getAllStarshops().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.STARSHIPS);
@@ -182,6 +234,10 @@ public class Client {
         return new Starship("Данный космический корабль не найдне");
     }
 
+    /**
+     * вернуть список всех кораблей
+     * @return лист кораблей
+     */
     public List<Starship> getAllStarship() {
         if (Starships.instance().getAllStarshops().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.STARSHIPS);
@@ -191,6 +247,11 @@ public class Client {
 
     /////////////////////// Vehicles //////////////////////////////
 
+    /**
+     * Поиск транспортного средства по названию
+     * @param name название
+     * @return транспорт
+     */
     public Vehicle getVehicleByName(String name) {
         if (Vehicles.instance().getAllVehicles().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.VEHICLES);
@@ -203,6 +264,11 @@ public class Client {
         return it;
     }
 
+    /**
+     * Поиск транспортного средства по id
+     * @param id id
+     * @return транспорт
+     */
     public Vehicle getVehicleById(int id) {
         if (Vehicles.instance().getAllVehicles().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.VEHICLES);
@@ -214,6 +280,10 @@ public class Client {
             return new Vehicle("Данное транспортное средство не найдено");
     }
 
+    /**
+     * вернуть все транспортные средства
+     * @return лист транспорта
+     */
     public List<Vehicle> getAllVehicles() {
         if (Vehicles.instance().getAllVehicles().isEmpty()) {
             Utility.instance().deserealizeEntites(Entitis.VEHICLES);

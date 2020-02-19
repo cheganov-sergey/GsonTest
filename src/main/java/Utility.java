@@ -116,7 +116,7 @@ public class Utility {
 
     /**
      * сериализуем объект java в json;
-     * @param entitis
+     * @param entitis Список сущьностей Entitis
      */
     public String serialixedEntitis(Entitis entitis) {
 
@@ -157,9 +157,6 @@ public class Utility {
                 return "Неверные параметры запроса";
         }
     }
-
-
-
 
 
 }
