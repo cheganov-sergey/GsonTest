@@ -7,6 +7,8 @@ import java.util.List;
  * getByName - найти по имени
  * getById - найти по id
  * getAll - показать все
+ *
+ * **fdfdf ntcn
  */
 
 public class Client {

@@ -8,6 +8,9 @@ public class MainClass {
 
         System.out.println(Client.instance().getPeopleByName("Darth Vader"));
         System.out.println(Client.instance().getPeopleById(1));
+        System.out.println(Client.instance().getPeopleById(8));
+        System.out.println(Client.instance().getPeopleById(10));
+        System.out.println(Client.instance().getPeopleById(1546));
         //System.out.println(Client.instance().getAllPeople());
         System.out.println("------------------------------------------------------------------------------------------");
 
